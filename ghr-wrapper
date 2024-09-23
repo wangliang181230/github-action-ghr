@@ -3,7 +3,6 @@ if [ "${GHR_DEBUG:-}" = "true" ] || [ "${GHR_DEBUG:-}" = "yes" ] || [ "${GHR_DEB
     set -x
 fi
 set -e -u -o pipefail
-[[ "$GITHUB_REF" != refs/tags/* ]] && echo "${GITHUB_REF} is not a tag, exiting..." && exit 78
 [ -f "$GHR_PATH" ] && cd -- "$(dirname -- "$GHR_PATH")" && export GHR_PATH="$(basename -- "$GHR_PATH")"
 [ -d "$GHR_PATH" ] && cd -- "$GHR_PATH" && export GHR_PATH=.
 [ -n "${GHR_COMPRESS:-}" ] && eval "$(/usr/local/bin/ghr-compress)"
