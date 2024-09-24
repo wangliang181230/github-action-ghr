@@ -30,5 +30,5 @@ fi
 if [ "${GHR_PRERELEASE:-}" = "true" ] || [ "${GHR_PRERELEASE:-}" = "yes" ] || [ "${GHR_PRERELEASE:-}" = "1" ]; then
     ghr+=("-prerelease")
 fi
-ghr+=("${GITHUB_REF#refs/tags/}" "$GHR_PATH")
+ghr+=("${GITHUB_REF#refs/*/}" "$GHR_PATH")
 "${ghr[@]}"
