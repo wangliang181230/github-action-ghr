@@ -56,10 +56,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Release
-        uses: fnkr/github-action-ghr@v1
-        if: startsWith(github.ref, 'refs/') # fork版本，支持分支上传，不只是tag
+        uses: wangliang181230/github-action-ghr@master
+        #if: startsWith(github.ref, 'refs/tags/') # fork版本，支持任意事件触发release，不再只有tag
         env:
           GHR_COMPRESS: xz
           GHR_PATH: build/
+          GHR_TITLE: ${{ github.ref_name }}
+          GHR_REPLACE: true
+          GHR_DRAFT: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
