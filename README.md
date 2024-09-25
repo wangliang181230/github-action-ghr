@@ -57,7 +57,7 @@ jobs:
     steps:
       - name: Release
         uses: fnkr/github-action-ghr@v1
-        if: startsWith(github.ref, 'refs/tags/')
+        if: startsWith(github.ref, 'refs/') # fork版本，支持分支上传，不只是tag
         env:
           GHR_COMPRESS: xz
           GHR_PATH: build/
